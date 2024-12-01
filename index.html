@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="header">
+    <h1>NETFLIX</h1>
+    <button1>*A English ▼</button1>
+    <button2>  Sign In </button2> 
+    <div class="container">
+     <h2>Unlimited movies,TV</h2>
+     <h3>Shows and more</h3>  
+     <p>Starts at  ₹:149.Cancel at any time.</p>
+    </div>
+    <div class="input">
+    <input type="text" placeholder="  Email Address">
+    <button onclick="focusOnInput()">Get Started</button>
+    </div>
+    <div class="footer">
+        <h4>Trending Now</h4>
+        <button1> 🌐 INDIA  ▼</button1>
+        <button2> 🎞️ MOVIES   ▼</button2> 
+        <h1></h1>
+        <div id="box1"><h5>1</h5></div>
+        <div id="box2"><h5>2</h5></div>
+        <div id="box3"><h5>3</h5></div>
+        <div id="box4"><h5>4</h5></div>
+        <div id="box5"><h5>5</h5></div>
+        <div id="box6"><h5>6</h5></div>
+        <h3 id="toggleButton">></h3>
+        <div id="box7"><h5>7</h5></div>
+        <div id="box8"><h5>8</h5></div>
+        <div id="box9"><h5>9</h5></div>
+        <div id="box10"><h5>10</h5></div>
+    </div>
+    <div class="more">
+        <p>More reasons to join</p>
+        <div id="b1">Stories tailored to your<br>taste</div>
+        <div id="b2">Cancel or switch plans<br>Anytime</div>
+        <div id="b3">A place just for kids</div>
+        <div id="b4">For Your Phone,tablet<br>laptop and TV</div>
+    </div>
+    <div class="questions">
+        <h2>Frequantly Asked Questions</h2>
+        <h6> What is Netflix?</h6>
+        <h6>How much Netflix cost?</h6>
+        <h6>Where can i watch?</h6>
+        <h6>How do i cancel?</h6>
+        <h6>What can i watch on Netflix?</h6>
+        <h6>Is Netflix good for kids?</h6>
+        <button onclick="goToLocation()">Get Started</button>
+    </div>
+    <div class="last">
+    <h6>Questions?Call 000-800-919-1694</h6>
+    <p2>FAQ<br>Investor relations<br>privacy<br>Speed test</p2>
+    <p3>Help Center<br>Jobs<br>Cookie Preferences<br>Legel Notices</p3>
+    <p4>Accounts<br>Ways to watch<br>Corpate Information<br>Only on Netflix</p4>
+    <p5>Media center<br>Terms of use<br>Contact us</p5>
+    </div>
+    <div class="icon">
+        <button1>*A English ▼</button1>
+    </div>
+    <div class="current">
+        <p>Netflix India</p>
+    </div>
+    <div class="saloni"></div>
+    </div>
+    <script>
+        document.querySelector("button2").addEventListener("click", function() {
+    window.location.href = "https://www.netflix.com/login";
+});
+function focusOnInput() {
+    document.querySelector("input").focus();
+}
+function goToLocation() {
+     window.location.href="https://www.netflix.com/signup/registration?previousMode=welcome&locale=en-IN"
+} 
+
+// Select the button by tag name
+const button = document.getElementsByTagName("button1")[0];
+
+// Create the dropdown menu
+const dropdown = document.createElement("div");
+dropdown.style.position = "absolute";
+dropdown.style.backgroundColor = "#ffffff";
+dropdown.style.border = "1px solid #ddd";
+dropdown.style.boxShadow = "0px 8px 16px rgba(0, 0, 0, 0.2)";
+dropdown.style.display = "none";
+
+// Create language options
+const languages= [
+    { name: "Hindi", url: "https://www.netflix.com/in-hi/" }, 
+    { name: "English", url: "" }
+];
+
+languages.forEach(language => {
+    const option = document.createElement("a");
+    option.href = "#";
+    option.style.display = "block";
+    option.style.padding = "8px 12px";
+    option.style.color = "black";
+    option.style.textDecoration = "none";
+    option.textContent = language.name;
+    
+    // Set language and redirect on click
+    option.onclick = function() {
+        button.textContent = `*A ${language.name} ▼`;
+        window.location.href = language.url; // Redirect to the selected language's URL
+        dropdown.style.display = "none"; // Hide dropdown after selection
+    };
+    
+    dropdown.appendChild(option);
+});
+
+// Add dropdown to the document
+document.body.appendChild(dropdown);
+
+// Show or hide dropdown on button click
+button.onclick = function(event) {
+    event.stopPropagation();
+    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    
+    // Position dropdown below the button
+    const rect = button.getBoundingClientRect();
+    dropdown.style.left = `${rect.left}px`;
+    dropdown.style.top = `${rect.bottom}px`;
+};
+
+// Close dropdown if clicked outside
+window.onclick = function() {
+    dropdown.style.display = "none";
+};
+
+    </script>
+    <script>
+        // Select the button within the footer div
+const countryButton = document.querySelector(".footer button1");
+
+// Create a dropdown menu
+const countryDropdown = document.createElement("div");
+countryDropdown.style.position = "absolute";
+countryDropdown.style.backgroundColor = "#ffffff";
+countryDropdown.style.border = "1px solid #ddd";
+countryDropdown.style.boxShadow = "0px 8px 16px rgba(0, 0, 0, 0.2)";
+countryDropdown.style.display = "none";
+countryDropdown.style.zIndex = "1"; // Ensures it appears above other elements
+
+// Define the options for the dropdown
+const options = ["India", "Global"];
+options.forEach(option => {
+    const optionElement = document.createElement("a");
+    optionElement.href = "#";
+    optionElement.style.display = "block";
+    optionElement.style.padding = "8px 12px";
+    optionElement.style.color = "black";
+    optionElement.style.textDecoration = "none";
+    optionElement.textContent = option;
+    
+    // Set button text to selected option and close the dropdown
+    optionElement.onclick = function() {
+        countryButton.textContent = `🌐 ${option} ▼`;
+        countryDropdown.style.display = "none";
+    };
+    
+    countryDropdown.appendChild(optionElement);
+});
+
+// Append dropdown to the `.footer` container
+document.querySelector(".footer").appendChild(countryDropdown);
+
+// Show or hide dropdown on button click
+countryButton.onclick = function(event) {
+    event.stopPropagation();
+    countryDropdown.style.display = countryDropdown.style.display === "none" ? "block" : "none";
+    
+    // Position the dropdown below the button
+    const rect = countryButton.getBoundingClientRect();
+    countryDropdown.style.left = `${rect.left}px`;
+    countryDropdown.style.top = `${rect.bottom + window.scrollY}px`; // Adjust for page scroll
+};
+
+// Close dropdown when clicking outside
+window.onclick = function() {
+    countryDropdown.style.display = "none";
+};
+</script>
+<script>
+    // Select the button within the footer div
+const mediaButton = document.querySelector(".footer button2");
+
+// Create a dropdown menu
+const mediaDropdown = document.createElement("div");
+mediaDropdown.style.position = "absolute";
+mediaDropdown.style.backgroundColor = "#ffffff";
+mediaDropdown.style.border = "1px solid #ddd";
+mediaDropdown.style.boxShadow = "0px 8px 16px rgba(0, 0, 0, 0.2)";
+mediaDropdown.style.display = "none";
+mediaDropdown.style.zIndex = "1"; // Ensures it appears above other elements
+
+// Define options for the dropdown
+const mediaOptions = ["Movies", "TV Shows"];
+mediaOptions.forEach(option => {
+    const optionElement = document.createElement("a");
+    optionElement.href = "#";
+    optionElement.style.display = "block";
+    optionElement.style.padding = "8px 12px";
+    optionElement.style.color = "black";
+    optionElement.style.textDecoration = "none";
+    optionElement.textContent = option;
+    
+    // Update button text to selected option and close the dropdown
+    optionElement.onclick = function() {
+        mediaButton.textContent = `🎞️ ${option} ▼`;
+        mediaDropdown.style.display = "none";
+    };
+    
+    mediaDropdown.appendChild(optionElement);
+});
+
+// Append dropdown to the `.footer` container
+document.querySelector(".footer").appendChild(mediaDropdown);
+
+// Show or hide dropdown on button click
+mediaButton.onclick = function(event) {
+    event.stopPropagation();
+    mediaDropdown.style.display = mediaDropdown.style.display === "none" ? "block" : "none";
+    
+    // Position the dropdown below the button
+    const rect = mediaButton.getBoundingClientRect();
+    mediaDropdown.style.left = `${rect.left}px`;
+    mediaDropdown.style.top = `${rect.bottom + window.scrollY}px`; // Adjust for scroll position
+};
+
+// Close dropdown when clicking outside
+window.onclick = function() {
+    mediaDropdown.style.display = "none";
+};
+
+</script>
+</body>
+</html>
